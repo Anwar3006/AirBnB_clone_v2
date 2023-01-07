@@ -7,25 +7,26 @@ from sqlalchemy.orm import relationship
 from models import storage
 from amenity import Amenity, place_amenity
 
+
 class Place(BaseModel, Base):
     """ A place to stay """
 
     __tablename__ = 'places'
 
     if getenv('HBNB_MYSQL_STORAGE') == 'db':
-        city_id     =   Column(String(60), ForeignKey('cities.id'), nullable=False)
-        user_id       =   Column(String(60), ForeignKey('users.id'), nullable=False)
-        name            =   Column(String(128), nullable=False)
-        description       =   Column(String(1024), nullable=False)
-        number_rooms        =   Column(Integer, nullable=False, Default=0)
-        number_bathrooms    =   Column(Integer, nullable=False, Default=0)
-        max_guest           =   Column(Integer, nullable=False, Default=0)
-        price_by_night      =   Column(Integer, nullable=False, Default=0)
-        latitude            =   Column(Float, nullable=False)
-        longitude           =   Column(Float, nullable=False)
-        reviews             = relationship("Place", back_ref='user', 
-                                                    cascade='all, delete-orphan')
-        amenities           = relationship('Amenity', secondary=place_amenity,
+        city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
+        user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
+        name = Column(String(128), nullable=False)
+        description = Column(String(1024), nullable=False)
+        number_rooms = Column(Integer, nullable=False, Default=0)
+        number_bathrooms = Column(Integer, nullable=False, Default=0)
+        max_guest = Column(Integer, nullable=False, Default=0)
+        price_by_night = Column(Integer, nullable=False, Default=0)
+        latitude = Column(Float, nullable=False)
+        longitude = Column(Float, nullable=False)
+        reviews = relationship("Place", back_ref='user',
+                               cascade='all, delete-orphan')
+        amenities = relationship('Amenity', secondary=place_amenity,
                                  back_populates='place_amenities',
                                  viewonly=False)
     else:
@@ -40,7 +41,6 @@ class Place(BaseModel, Base):
         latitude = 0.0
         longitude = 0.0
         amenity_ids = []
-
 
     @property
     def reviews(self):
@@ -71,5 +71,5 @@ class Place(BaseModel, Base):
         """Adding an Amenity.id to the amenity_ids
         """
 
-        if type(value) == Amenity:
+        if isinstance(value, Amenity):
             self.amenity_ids.append(value.id)

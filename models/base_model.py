@@ -3,17 +3,17 @@
 import uuid
 from datetime import datetime
 from sqlalchemy.orm import declarative_base
-from sqlalchemy import Integer, String, DateTime,Column
+from sqlalchemy import Integer, String, DateTime, Column
 from models import storage
 
 Base = declarative_base()
 
+
 class BaseModel:
     """A base class for all hbnb models"""
-    id           =  Column(String(60), Primary_key=True, nullable=False)
-    created_at   =  Column(DateTime, nullable=False, Default=datetime.utcnow)
-    updated_at   =  Column(DateTime, nullable=False, Default=datetime.utcnow)
-
+    id = Column(String(60), Primary_key=True, nullable=False)
+    created_at = Column(DateTime, nullable=False, Default=datetime.utcnow)
+    updated_at = Column(DateTime, nullable=False, Default=datetime.utcnow)
 
     def __init__(self, *args, **kwargs):
         """Instatntiates a new model"""
@@ -37,7 +37,7 @@ class BaseModel:
 
     def save(self):
         """Updates updated_at with current time when instance is changed"""
-        
+
         self.updated_at = datetime.now()
         storage.new(self)
         storage.save()
