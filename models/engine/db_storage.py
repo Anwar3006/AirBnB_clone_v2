@@ -79,3 +79,7 @@ class DBStorage:
             D_type[key] = row
 
         return D_type
+
+    def close(self):
+        """Close the working SQLAlchemy session."""
+        self.__session.close()

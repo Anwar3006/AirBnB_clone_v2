@@ -4,8 +4,8 @@ from models.base_model import BaseModel, Base
 from os import getenv
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship
-from models import storage
-from amenity import Amenity, place_amenity
+import models
+from models.amenity import Amenity, place_amenity
 
 
 class Place(BaseModel, Base):
@@ -47,7 +47,7 @@ class Place(BaseModel, Base):
         """" """
 
         R_list = []
-        for _id, place in storage.all(Place).items():
+        for _id, place in models.storage.all(Place).items():
             if place.user_id == self.id:
                 R_list.append(place)
 
@@ -60,7 +60,7 @@ class Place(BaseModel, Base):
 
         amenity_list = []
 
-        for amenity in storage.all(Amenity).values():
+        for amenity in models.storage.all(Amenity).values():
             if amenity.id in self.amenity_ids:
                 amenity_list.append(amenity)
 

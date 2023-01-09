@@ -4,8 +4,6 @@ from models.base_model import BaseModel, Base
 from os import getenv
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-from models import Place
-from models import storage
 
 
 class User(BaseModel, Base):
