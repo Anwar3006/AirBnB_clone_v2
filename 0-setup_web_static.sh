@@ -13,7 +13,7 @@ sudo mkdir -p /data/web_static/releases/test
 sudo mkdir -p /data/web_static/shared
 
 # Create Symbolic link of current directory to test directory
-sudo ln -sf /data/web_static/releases/test /data/web_static/current
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 printf %s "
     <html>
@@ -32,11 +32,12 @@ sudo chown -R ubuntu:ubuntu /data
 printf %s "server{
     listen      80;
     listen      [::]:80;
-    root        /data/web_static/release/test;
+    root        /var/www/html;
     index       index.html index.htm;
 
     location /hbnb_static{
         alias    /data/web_static/current;
+        index    index.html index.htm;
     }
 }" |  sudo tee /etc/nginx/sites-available/default
 
