@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# Fabfile to generates a .tgz archive from the contents of web_static.
 from datetime import datetime
 from fabric.api import *
 from os import path
@@ -20,7 +19,12 @@ def do_pack():
 
 
 def do_deploy(archive_path):
-    """Distributes an .tgz archive through web servers
+    """Distributes an archive to a web server.
+    Args:
+        archive_path (str): The path of the archive to distribute.
+    Returns:
+        If the file doesn't exist at archive_path or an error occurs - False.
+        Otherwise - True.
     """
     if path.exists(archive_path):
         archive_file = archive_path.split('/')[1]
