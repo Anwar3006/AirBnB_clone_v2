@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# Fabfile to distribute an archive to a web server.
 from datetime import datetime
 from fabric.api import *
 from os import path
