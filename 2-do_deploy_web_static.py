@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Working with Fabric"""
+# Fabfile to generates a .tgz archive from the contents of web_static.
 from datetime import datetime
 from fabric.api import *
 from os import path
