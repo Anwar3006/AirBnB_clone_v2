@@ -6,6 +6,7 @@ from os import path
 
 env.hosts = ['100.26.160.22', '100.25.202.194']
 
+@runs_once
 def do_pack():
     """Generates a .tgz archive from the contents
     of the web_static folder of this repository.
@@ -13,9 +14,11 @@ def do_pack():
 
     time = datetime.now()
     now = time.strftime('%Y%m%d%H%M%S')
+    path = "versions/web_static_{}.tgz".format(now)
 
     local("mkdir -p versions")
-    local("tar -czvf versions/web_static_{}.tgz web_static".format(now))
+    local("tar -czvf {} web_static".format(path))
+    return path
 
 def do_deploy(archive_path):
     """Distributes an .tgz archive through web servers
@@ -39,5 +42,8 @@ def do_deploy(archive_path):
     return False
 
 def deploy():
-    """ """
-    
+    """Creates and Distributes a .tgz archive through web servers
+    """
+
+    archive = do_pack()
+    return do_deploy(archive) 

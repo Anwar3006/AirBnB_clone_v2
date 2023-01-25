@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-from fabric.api import local
+from fabric.api import *
 from datetime import datetime
 
+env.hosts = ['localhost']
 
+@task(alias='k')
 def do_pack():
     """Generates a .tgz archive from the contents
     of the web_static folder of this repository.
