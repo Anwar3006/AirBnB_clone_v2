@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Working with Fabric"""
 from datetime import datetime
 from fabric.api import *
 from os import path
