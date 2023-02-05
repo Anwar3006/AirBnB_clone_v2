@@ -5,6 +5,7 @@ from os import path
 
 
 env.hosts = ['100.26.160.22', '100.25.202.194']
+env.key = '~/.ssh/id_rsa'
 
 @runs_once
 def do_pack():
