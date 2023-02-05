@@ -23,6 +23,7 @@ def do_pack():
 def do_deploy(archive_path):
     """Distributes an .tgz archive through web servers
     """
+
     if path.exists(archive_path):
         archive_file = archive_path.split('/')[1]
         upload_path = f'/tmp/{archive_file}'
