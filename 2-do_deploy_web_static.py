@@ -8,24 +8,8 @@ from os import path
 env.hosts = ['100.26.160.22', '100.25.202.194']
 
 
-def do_pack():
-    """Generates a .tgz archive from the contents
-    of the web_static folder of this repository.
-    """
-    time = datetime.now()
-    now = time.strftime('%Y%m%d%H%M%S')
-
-    local("mkdir -p versions")
-    local("tar -czvf versions/web_static_{}.tgz web_static".format(now))
-
-
 def do_deploy(archive_path):
     """Distributes an archive to a web server.
-    Args:
-        archive_path (str): The path of the archive to distribute.
-    Returns:
-        If the file doesn't exist at archive_path or an error occurs - False.
-        Otherwise - True.
     """
     if path.exists(archive_path):
         archive_file = archive_path.split('/')[1]
