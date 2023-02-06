@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""script that starts a Flask web application:
+listening on 0.0.0.0, port 5000
+"""
 from models import storage
 from flask import Flask, render_template
 from models.state import State
