@@ -61,9 +61,6 @@ if __name__ == "__main__":
         else:
             return 404
 
-    app.run(debug=True, host="0.0.0.0")
-
-
     @app.route('/states_list', strict_slashes=False)
     def states_list():
         """Display a HTML page of the States
@@ -71,7 +68,6 @@ if __name__ == "__main__":
         states = storage.all(State).values()
         return render_template('7-states_list.html', states=states)
 
-        
     @app.teardown_appcontext
     def teardown_db(error):
         """Closes the database again at the end of the request.
