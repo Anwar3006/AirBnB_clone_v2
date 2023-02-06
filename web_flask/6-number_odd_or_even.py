@@ -30,7 +30,7 @@ if __name__ == "__main__":
     @app.route("/python/<text>", strict_slashes=False)
     def python(text="is cool"):
         """display “Python ”, followed by the value of the text variable
-        (replace underscore _ symbols with a space ) 
+        (replace underscore _ symbols with a space )
         """
         if text:
             new = ''.join(text.split('_'))
