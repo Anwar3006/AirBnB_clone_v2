@@ -11,9 +11,9 @@ if __name__ == "__main__":
 
 
     @app.route("/", strict_slashes=False)
-    def heelo():
+    def hello():
         """display “Hello HBNB!”"""
         return "Hello HBNB!"
 
 
-app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0")
