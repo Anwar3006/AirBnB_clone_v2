@@ -9,11 +9,9 @@ from flask import Flask
 if __name__ == "__main__":
     app = Flask(__name__)
 
-
     @app.route("/", strict_slashes=False)
     def hello():
         """display “Hello HBNB!”"""
         return "Hello HBNB!"
-
 
     app.run(debug=True, host="0.0.0.0")
