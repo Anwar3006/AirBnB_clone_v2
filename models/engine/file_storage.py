@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module defines a class to manage file storage for hbnb clone"""
+"""This is the file storage class for AirBnB"""
 import json
 from models.base_model import BaseModel
 from models.user import User
@@ -22,8 +22,10 @@ class FileStorage:
 
     def all(self, cls=None):
         """Returns all the objects
+
         If a class is specified, the method only
         returns the objects of same type.
+
         """
 
         if cls:

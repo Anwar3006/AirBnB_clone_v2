@@ -1,14 +1,15 @@
 #!/usr/bin/python3
-""" City Module for HBNB project """
+"""This is the city class"""
 from models.base_model import BaseModel, Base
 from os import getenv
-from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.ext.declarative import declarative_base
 
 
 class City(BaseModel, Base):
     """This is the class for City
+
     Attributes:
         state_id: The state id
         name: input name

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" State Module for HBNB project """
+"""This is the state class"""
 import models
 from models.base_model import BaseModel, Base
 from models.city import City
@@ -11,8 +11,10 @@ from sqlalchemy.ext.declarative import declarative_base
 
 class State(BaseModel, Base):
     """This is the class for State
+
     Attributes:
         name: input name
+
     """
 
     __tablename__ = "states"
